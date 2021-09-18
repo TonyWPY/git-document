@@ -1,0 +1,53 @@
+Git搭建
+
+1. Git初始化本地项目，生成./git文件(默认隐藏)
+--> git init
+
+2. 设置签名(无实际价值，只是区别开发者身份)
+   项目级别(仅在当前本地库范围内有效，保存在当前项目目录中的./git/config中)
+--> git config user.name <用户名>
+--> git config user.email <用户名>@<xxx.com>
+   系统级别(当前操作系统的用户范围内有效，保存在(cd ~[/Users/lendawan/])中./git/config目录下)
+--> git config --global user.name <用户名>
+--> git config --global user.email <用户名>@<xxx.com>
+
+3. git命令
+(1) 查询当前项目的git库状态，可以查看本地未提交的代码
+--> git status
+(2) 将文件添加到本地git仓库，工作区->暂存区
+--> git add . (添加全部)
+--> git add <文件名>  (添加指定文件)
+(3) 将文件文件移除暂存区，不会删除此文件，暂存区->工作区
+--> git rm --cached <文件名>
+(4) 提交代码，暂存区->本地库
+--> git commit -m "<提交说明>" <文件名>(不写提交全部)
+(5) 提交日志
+--> git log
+--> git log --pretty=oneline (改变显示效果)
+--> git log --oneline (缩短提交码，改变显示效果)
+--> git reflog (显示版本号HEAD@{number}，可以回退到指定版本)
+(6) 回退到指定历史版本，HEAD指针指向到指定历史版本，前提先使用git reflog查看提交码和HEAD@{number}
+--> git reset --hard <提交码>
+(7) 回退到上n个版本(只能回退)，前提先使用git lof --oneline
+--> git reset --hard HEAD^ (回退到上一版本)
+--> git reset --hard HEAD~n (n是数字，回退到上n个版本)
+    hard:在本地库移动HEAD指针，重置暂存区，重置缓存区
+    soft:仅仅在本地库移动HEAD指针
+    mixed:在本地库移动HEAD指针，重置暂存区
+可以回退删除的文件
+将暂存区的删除文件找回
+--> git reset --hard HEAD(将工作区和暂存区刷新，与指针指向的本地库保持同步)
+(8) 比较差异的文件(不指定文件名，比较所有文件)
+--> git diff <文件名>
+--> git diff HEAD^(HEAD~n) <文件名> (和历史某一版本比较差异性文件)
+(9) 分支管理
+
+
+
+
+
+
+
+
+
+
