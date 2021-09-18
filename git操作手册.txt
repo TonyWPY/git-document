@@ -53,12 +53,30 @@ Git搭建
 --> git checkout master
 再将要合并的分支合到相关分支上(这里指master)
 --> git merge <分支名>
+(5) 解决冲突(两个文件都改了同一行，且内容不同)，分支处于MERGING状态
+进入文件进行编辑，解决冲突，标志位是 <<<<<<<<HEAD(本地分支) >>>>>>>>> <外来分支>
+解决完冲突后，使用git add <文件名>及git commit提交(此处不能带文件名)，完成合并
 
 
-
-
-
-
+5. 远程仓库github
+(1) 查看远程仓库分支
+--> git remote -v
+(2) 添加指定远程仓库链接
+--> git remote add origin https://github.com/TonyWPY/git-document.git
+(3) 将本地分支推送到远程仓库
+--> git push origin <分支名>
+解决鉴权失败的情况:
+在github上找token，个人设置->Settings->Developer settings->Personal access tokens->Generate new token->编写note并勾选repo和delete_repo，设置过期时间->Generate token(可以在你的Personal access tokens查看你的token)
+方案一：将自己的token粘贴至Password for 'https://TonyWPY@github.com'密码处
+方案二：通过命令：git remote set-url origin https://<your_token>@github.com/<USERNAME>/<REPO>.git
+<your_token>：换成你自己得到的token
+<USERNAME>：是你自己github的用户名
+<REPO>：是你的仓库名称
+例如：git remote set-url origin https://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@github.com/TonyWPY/git-document.git
+(4) 将远程仓库的分支克隆到本地库(带初始化)
+--> git clone https://github.com/TonyWPY/git-document.git
+(5) 抓取远程新的分支库
+--> git fetch
 
 
 
